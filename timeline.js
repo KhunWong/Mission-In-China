@@ -51,8 +51,9 @@
     })[0];
   }
 
+  // 文章里的相对图片改写成该记录的绝对站点路径：页面停在站点根，不能指望浏览器按文章路径解析。
   function recordDir(event) {
-    return event.path.replace(/\/index\.md$/, '');
+    return '/' + event.path.replace(/\/index\.md$/, '');
   }
 
   function stripFrontmatter(markdown) {
@@ -73,8 +74,7 @@
   function renderInline(text) {
     var html = escapeHtml(text);
     html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function (_, alt, src) {
-      var sized = /\.svg(\?|#|$)/i.test(src) ? ' width="800" height="420"' : '';
-      return '<img src="' + src + '" alt="' + alt + '"' + sized + '>';
+      return '<img src="' + src + '" alt="' + alt + '">';
     });
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
