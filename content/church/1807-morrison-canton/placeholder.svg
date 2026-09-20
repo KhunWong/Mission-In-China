@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" role="img" aria-label="占位图">
+  <rect width="800" height="420" fill="#d8d0c0"/>
+  <rect x="18" y="18" width="764" height="384" fill="none" stroke="#a94f43" stroke-width="4" stroke-dasharray="16 11"/>
+  <text x="400" y="188" text-anchor="middle" font-size="42" font-family="Noto Serif SC, serif" fill="#a94f43">占位图</text>
+  <text x="400" y="242" text-anchor="middle" font-size="22" font-family="Source Han Sans SC, sans-serif" fill="#6f7974">不是马礼逊画像，仅作结构演示</text>
+</svg>
