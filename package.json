@@ -1,0 +1,10 @@
+{
+  "name": "mission-in-china",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test tests/*.test.js",
+    "preview": "node scripts/serve.js"
+  }
+}

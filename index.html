@@ -12,12 +12,22 @@
     <div class="current"><b id="eraName">清朝</b><span>约 <strong id="currentYear">1807</strong> 年</span></div>
     <div class="legend"><span><i class="china-dot"></i>上方 · 中国历史</span><span><i class="gospel-dot"></i>下方 · 新教历史</span></div>
   </header>
-  <nav class="quick"><span>快速定位：</span><button data-year="1650">清朝</button><button data-year="1912">民国</button><button data-year="1950">新中国</button><em>横向滚动 / 滑动浏览时间线</em></nav>
+  <nav class="quick"><span>快速定位：</span><button data-year="700">唐朝</button><button data-year="1650">清朝</button><button data-year="1912">民国</button><button data-year="1950">新中国</button><em>横向滚动 / 滑动浏览时间线</em></nav>
   <main id="viewport" tabindex="0"><div id="canvas">
     <div class="map map-qing"><label>清朝</label></div><div class="map map-republic"><label>中华民国</label></div><div class="map map-prc"><label>中华人民共和国</label></div>
     <div id="grid"></div><div id="axis"></div><div id="ticks"></div><div id="events"></div>
   </div></main>
-  <aside id="detail" class="detail" aria-live="polite"><button id="closeDetail" aria-label="关闭">×</button><span id="detailType"></span><h2 id="detailTitle"></h2><p id="detailText"></p></aside>
+  <div id="article" class="article-modal" hidden>
+    <div class="article-backdrop" data-close-article></div>
+    <div class="article-panel" role="dialog" aria-modal="true" aria-labelledby="articleTitle">
+      <button type="button" class="article-close" data-close-article aria-label="关闭">×</button>
+      <header>
+        <span id="articleMeta"></span>
+        <h2 id="articleTitle"></h2>
+      </header>
+      <div id="articleBody" class="article-body"></div>
+    </div>
+  </div>
   <script src="timeline.js"></script>
 </body>
 </html>
