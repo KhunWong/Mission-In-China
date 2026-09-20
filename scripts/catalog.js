@@ -1,13 +1,13 @@
 // 内容目录 seam：吃下两个内容库的记录与站点元数据，吐出时间线清单或校验错误列表。
 // 本模块不做磁盘 IO；读盘在 scripts/build.js。
 
-const CHURCH_CATEGORIES = ['基督教在华', '新教历史'];
 const SLUG_PATTERN = /^\d{3,4}-[a-z0-9]+(-[a-z0-9]+)*$/;
+const FIELD_KEYS = ['title', 'year', 'description', 'category'];
 
-// 轨道与 china 的类别由内容库推出，不进 frontmatter。
+// 轨道由内容库推出；category 由各条记录的 frontmatter 自定。
 const COLLECTIONS = {
-  china: { side: 'top', category: '中国历史', keys: ['title', 'year', 'description'] },
-  church: { side: 'bottom', keys: ['title', 'year', 'description', 'category'] },
+  china: { side: 'top', keys: FIELD_KEYS },
+  church: { side: 'bottom', keys: FIELD_KEYS },
 };
 
 export function buildTimelineManifest({ entries, siteMeta }) {
@@ -52,9 +52,6 @@ function toEvent(entry, errors) {
   if (fields.year && !/^\d+$/.test(fields.year)) {
     errors.push(`${label}: year 必须是整数年份`);
   }
-  if (entry.collection === 'church' && fields.category && !CHURCH_CATEGORIES.includes(fields.category)) {
-    errors.push(`${label}: category 只能是「${CHURCH_CATEGORIES.join('」或「')}」`);
-  }
   if (errors.length > errorCount) return null;
   return {
     slug: entry.slug,
@@ -62,7 +59,7 @@ function toEvent(entry, errors) {
     year: Number(fields.year),
     title: fields.title,
     description: fields.description,
-    category: entry.collection === 'china' ? collection.category : fields.category,
+    category: fields.category,
     side: collection.side,
     path: entry.path,
     hasBody,
